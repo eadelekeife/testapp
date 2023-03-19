@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>funky web</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/ico" href="favicon.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/templates.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.0/css/line.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <%- include('partials/nav.ejs') %>
+        <div class="header-text">
+            <h1>All Youtube Thumbnail Templates <small>(1280 X 720 px)</small></h1>
+        </div>
+    </header>
+    <section class="mt-5">
+        <div class="contain">
+
+            <div class="template_block_cover">
+                <h4 class="template_block_title">Money</h4>
+                <div class="template_block_body">
+                    <div class="grid_4">
+                        <% data.forEach(temp=> {
+                            if(temp.category === "Money") { %>
+                            <div class="template_design">
+                                <img data-toggle="modal" data-target="#myModal"
+                                    src="../<%= temp.location.slice(8) %>"
+                                    data-desc="<%= temp.description %>" data-name="<%= temp.name %>"
+                                    data-svg="<%= JSON.stringify(temp.svgCode) %>"
+                                    data-tags="<%= temp.tags %>" data-id="<%= temp._id %>" class="img-fluid"
+                                    alt="templates">
+                                <div class="tag_blocks">
+                                    <% temp.tags.forEach(tag=> { %>
+                                        <div class="tags"><a href="/templates/<%= tag %>" class="text-dark">
+                                                <%= tag %>
+                                            </a></div>
+                                        <% }) %>
+                                </div>
+                            </div>
+                            <% } }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="template_block_cover">
+                <h4 class="template_block_title">Travel</h4>
+                <div class="template_block_body">
+                    <div class="grid_4">
+                        <% data.forEach(temp=> {
+                            if(temp.category === "Travel") { %>
+                            <div class="template_design">
+                                <!-- <button type="button" data-toggle="modal" data-target="#myModal"> -->
+                                <img data-toggle="modal" data-target="#myModal"
+                                    src="../<%= temp.location.slice(8) %>"
+                                    data-desc="<%= temp.description %>" data-name="<%= temp.name %>"
+                                    data-svg="<%= JSON.stringify(temp.svgCode) %>"
+                                    data-tags="<%= temp.tags %>" data-id="<%= temp._id %>" class="img-fluid"
+                                    alt="templates">
+                                <!-- </button> -->
+                                <div class="tag_blocks">
+                                    <% temp.tags.forEach(tag=> { %>
+                                        <div class="tags"><a href="/templates/<%= tag %>" class="text-dark">
+                                                <%= tag %>
+                                            </a></div>
+                                        <% }) %>
+                                </div>
+                            </div>
+                            <% } }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="template_block_cover">
+                <h4 class="template_block_title">Technology</h4>
+                <div class="template_block_body">
+                    <div class="grid_4">
+                        <% data.forEach(temp=> {
+                            if(temp.category === "Technology") { %>
+                            <div class="template_design">
+                                <!-- <button type="button" data-toggle="modal" data-target="#myModal"> -->
+                                <img data-toggle="modal" data-target="#myModal"
+                                    src="../<%= temp.location.slice(8) %>"
+                                    data-desc="<%= temp.description %>" data-name="<%= temp.name %>"
+                                    data-svg="<%= JSON.stringify(temp.svgCode) %>"
+                                    data-tags="<%= temp.tags %>" data-id="<%= temp._id %>" class="img-fluid"
+                                    alt="templates">
+                                <!-- </button> -->
+                                <div class="tag_blocks">
+                                    <% temp.tags.forEach(tag=> { %>
+                                        <div class="tags"><a href="/templates/<%= tag %>" class="text-dark">
+                                                <%= tag %>
+                                            </a></div>
+                                        <% }) %>
+                                </div>
+                            </div>
+                            <% } }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="template_block_cover">
+                <h4 class="template_block_title">Motivational</h4>
+                <div class="template_block_body">
+                    <div class="grid_4">
+                        <% data.forEach(temp=> {
+                            if(temp.category === "Motivational") { %>
+                            <div class="template_design">
+                                <!-- <button type="button" data-toggle="modal" data-target="#myModal"> -->
+                                <img data-toggle="modal" data-target="#myModal"
+                                    src="../<%= temp.location.slice(8) %>"
+                                    data-desc="<%= temp.description %>" data-name="<%= temp.name %>"
+                                    data-svg="<%= JSON.stringify(temp.svgCode) %>"
+                                    data-tags="<%= temp.tags %>" data-id="<%= temp._id %>" class="img-fluid"
+                                    alt="templates">
+                                <!-- </button> -->
+                                <div class="tag_blocks">
+                                    <% temp.tags.forEach(tag=> { %>
+                                        <div class="tags"><a href="/templates/<%= tag %>" class="text-dark">
+                                                <%= tag %>
+                                            </a></div>
+                                        <% }) %>
+                                </div>
+                            </div>
+                            <% } }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="template_block_cover">
+                <h4 class="template_block_title">Business</h4>
+                <div class="template_block_body">
+                    <div class="grid_4">
+                        <% data.forEach(temp=> {
+                            if(temp.category === "Business") { %>
+                            <div class="template_design">
+                                <!-- <button type="button" data-toggle="modal" data-target="#myModal"> -->
+                                <img data-toggle="modal" data-target="#myModal"
+                                    src="../<%= temp.location.slice(8) %>"
+                                    data-desc="<%= temp.description %>" data-name="<%= temp.name %>"
+                                    data-svg="<%= JSON.stringify(temp.svgCode) %>"
+                                    data-tags="<%= temp.tags %>" data-id="<%= temp._id %>" class="img-fluid"
+                                    alt="templates">
+                                <!-- </button> -->
+                                <div class="tag_blocks">
+                                    <% temp.tags.forEach(tag=> { %>
+                                        <div class="tags"><a href="/templates/<%= tag %>" class="text-dark">
+                                                <%= tag %>
+                                            </a></div>
+                                        <% }) %>
+                                </div>
+                            </div>
+                            <% } }) %>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <h5 class="mt-5">All templates</h5>
+            <hr>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-6 ">
+                    <a href="/scratch">
+                        <button class="btn-new">
+                            <img src="../images/scratch.png" alt="blank image" class="img-fluid">
+                        </button>
+                    </a>
+                    <ul class="mt-2"></ul>
+                </div>
+                <% data.forEach(temp => { %>
+                <div class="col-lg-3 col-md-3 col-6 col-6  templates">
+                    <button type="button" data-toggle="modal" data-target="#myModal">
+                        <img src="../<%= temp.location.slice(8) %>" data-desc="<%= temp.description %>"
+                            data-name="<%= temp.name %>" data-svg="<%= JSON.stringify(temp.svgCode) %>"
+                            data-tags="<%= temp.tags %>" data-id="<%= temp._id %>" class="img-fluid"
+                            alt="templates">
+                    </button>
+                    <ul class="mt-2">
+                        <% temp.tags.forEach(tag => { %>
+                        <li><a href="/templates/<%= tag %>" class="text-dark"><%= tag %></a></li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- .modal-dialog-scrollable -->
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="modalCardHeader">Select Account</h5> -->
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body my-4 py-5">
+                    <div class="mx-2">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-7">
+                                <img src="" alt="template preview in a modal" class="img-fluid">
+                                <div class="mt-3 pt-3">
+                                    <small class="pt-3 mt-3 canvas-element">TAGS</small>
+                                    <ul id="showTag" class=""></ul>
+                                    <div class="mt-3"></div>
+                                    <small class="canvas-element">FONT FAMILIES</small>
+                                    <ul id="showFont"></ul>
+                                    <div class="mt-3"></div>
+                                    <small class="canvas-element">COLORS</small>
+                                    <ul id="showColor">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5">
+                                <h2></h2>
+                                <small>Youtube Thumbnail (1200 x 720 px )</small>
+                                <p class="mt-3 desc"></p>
+                                <a href="" class="mt-3 btn btn-prim p-2 col-lg-12 col-md-12"></a>
+                            </div>
+                        </div>
+
+                        <div style="clear: both;"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="mt-4 pt-4"></div>
+
+</body>
+
+<script>
+    function myLightBox() {
+        let allImages = document.querySelectorAll('.templates img');
+        for (let images of [...allImages]) {
+            images.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector('#showColor').innerText = '';
+                document.querySelector('#showFont').innerText = '';
+                document.querySelector('#myModal #showTag').innerText = '';
+
+                document.querySelector('#myModal img').src = this.src;
+                document.querySelector('#myModal h2').innerText = this.getAttribute('data-name');
+                document.querySelector('#myModal p').innerText = this.getAttribute('data-desc');
+                let work = JSON.parse(this.getAttribute('data-svg'));
+                if (work.objects) {
+                    work.objects.forEach(obj => {
+                        if(obj.type === 'textbox') {
+                            let createLi = document.createElement('li');
+                            createLi.classList.add('tag');
+                            createLi.innerText = obj.fontFamily;
+
+                            document.querySelector('#showFont').appendChild(createLi);
+                        }
+                    })
+                    work.objects.forEach(obj => {
+                        if(obj.type === 'textbox') {
+                            let createButton = document.createElement('button');
+                            createButton.classList.add('btn');
+                            createButton.classList.add('p-3');
+                            createButton.classList.add('m-2');
+
+                            createButton.style.backgroundColor = obj.fill;
+                            let col = createButton.style.backgroundColor;
+                            if (col == '#ffffff' || col == 'white' || col == 'rgb(255, 255, 255)') {
+                                createButton.classList.add('color-tag');
+                            }
+
+                            document.querySelector('#showColor').appendChild(createButton);
+                        }
+                    })
+                }
+                let id = this.getAttribute('data-id');
+                document.querySelector('#myModal a').href = `/edit/${id}`;
+                document.querySelector('#myModal a').innerHTML = "Use Template";
+                let tags = this.getAttribute('data-tags').split(',');
+                for (let tag of tags) {
+                    let createA = document.createElement('a');
+                    let createDiv = document.createElement('li');
+                    createDiv.classList.add('tag');
+
+                    createA.href = `/templates/${tag}`;
+                    createA.innerText = tag;
+
+                    createDiv.appendChild(createA);
+
+                    document.querySelector('#myModal #showTag').appendChild(createDiv);
+                }
+            })
+        }
+    }
+    myLightBox();
+</script>
+
+</html>

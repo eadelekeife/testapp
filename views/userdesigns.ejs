@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/extra_head.ejs') %>
+
+    <body>
+        <%- include('partials/real_nav.ejs') %>
+            <div class="templates">
+                <section class="mt-5">
+                    <div class="contain">
+                        <div class="template_block_cover">
+                            <h4 class="template_block_title">Your Designs</h4>
+                            <div class="template_block_body">
+                                <div class="grid_4">
+                                    <% data.forEach(temp=> { %>
+                                        <div class="template_design">
+                                            <!-- <button type="button" data-toggle="modal" data-target="#myModal"> -->
+                                            <img data-toggle="modal" data-target="#myModal"
+                                                src="../<%= temp.location.slice(8) %>"
+                                                data-desc="<%= temp.description %>" data-name="<%= temp.name %>"
+                                                data-svg="<%= JSON.stringify(temp.svgCode) %>"
+                                                data-tags="<%= temp.tags %>" data-id="<%= temp._id %>" class="img-fluid"
+                                                alt="templates">
+                                            <!-- </button> -->
+                                            <div class="tag_blocks">
+                                                <% temp.tags.forEach(tag=> { %>
+                                                    <div class="tags"><a href="/templates/<%= tag %>" class="text-dark">
+                                                            <%= tag %>
+                                                        </a></div>
+                                                    <% }) %>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-xl">
+                        <!-- .modal-dialog-scrollable -->
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <!-- <h5 class="modal-title" id="modalCardHeader">Select Account</h5> -->
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body template_preview">
+                                <div class="mx-2">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7">
+                                            <img style="border-radius: 3px;" src="" alt="template preview in a modal"
+                                                class="img-fluid">
+                                        </div>
+                                        <div class="col-lg-5 col-md-5">
+                                            <h2></h2>
+                                            <ul id="showColor">
+
+                                            </ul>
+                                            <div class="mt-2 tag_blocks" id="showTag">
+                                            </div>
+                                            <p class="mt-1 desc"></p>
+                                            <a href="" class="mt-1 bg_black p-2 full_width"></a>
+                                        </div>
+                                    </div>
+
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <footer>
+                <div class="contain">
+                    <div class="grid_4_first_bias">
+                        <div>
+                            <h4>Thumbvids</h4>
+                            <p>I love experimenting and trying out new things. It explains my entire journey into
+                                softwate development. I needed a design for something sometime ago and I came across
+                                Canva. I was wowed by this site that I immediately started researching how to create
+                                something like it. While this is just a small part of Canva's entire product, I have
+                                proven to myself that I can build something cool.</p>
+                        </div>
+                        <div>
+                            <h4>Why Thumbvids?</h4>
+                            <ul>
+                                <li>Thumbvids for Ecommerce</li>
+                                <li>Thumbvids for Technology</li>
+                                <li>Thumbvids for Sports</li>
+                                <li>Thumbvids for Startups</li>
+                                <li>All Templates</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>About Thumbvids</h4>
+                            <ul>
+                                <li>Who we are</li>
+                                <li>Channels</li>
+                                <li>Engagement</li>
+                                <li>Scale</li>
+                                <li>Watch the Demo</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Connect with us</h4>
+                            <ul>
+                                <li>Who we are</li>
+                                <li>Channels</li>
+                                <li>Engagement</li>
+                                <li>Scale</li>
+                                <li>Watch the Demo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+    </body>
+
+    <script>
+        function myLightBox() {
+            let allImages = document.querySelectorAll('.templates img');
+            for (let images of [...allImages]) {
+                images.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector('#showColor').innerText = '';
+                    // document.querySelector('#showFont').innerText = '';
+                    document.querySelector('#myModal #showTag').innerText = '';
+
+                    document.querySelector('#myModal img').src = this.src;
+                    document.querySelector('#myModal h2').innerText = this.getAttribute('data-name');
+                    // document.querySelector('#myModal p').innerText = this.getAttribute('data-desc');
+                    let work = JSON.parse(this.getAttribute('data-svg'));
+                    if (work.objects) {
+                        // work.objects.forEach(obj => {
+                        //     if (obj.type === 'textbox') {
+                        //         let createLi = document.createElement('li');
+                        //         createLi.classList.add('tag');
+                        //         createLi.innerText = obj.fontFamily;
+
+                        //         document.querySelector('#showFont').appendChild(createLi);
+                        //     }
+                        // })
+                        work.objects.forEach(obj => {
+                            if (obj.type === 'textbox') {
+                                let createButton = document.createElement('button');
+                                createButton.classList.add('btn');
+                                createButton.classList.add('p-2');
+                                createButton.classList.add('mr-1');
+                                createButton.classList.add('ml-0');
+
+                                createButton.style.backgroundColor = obj.fill;
+                                let col = createButton.style.backgroundColor;
+                                if (col == '#ffffff' || col == 'white' || col == 'rgb(255, 255, 255)') {
+                                    createButton.classList.add('color-tag');
+                                }
+
+                                document.querySelector('#showColor').appendChild(createButton);
+                            }
+                        })
+                    }
+                    let id = this.getAttribute('data-id');
+                    document.querySelector('#myModal a').href = `/edit/${id}`;
+                    document.querySelector('#myModal a').innerHTML = "Use Template";
+                    let tags = this.getAttribute('data-tags').split(',');
+                    for (let tag of tags) {
+                        let createA = document.createElement('a');
+                        let createDiv = document.createElement('div');
+                        createDiv.classList.add('tags');
+                        createA.classList.add('text-dark');
+
+                        createA.href = `/templates/${tag}`;
+                        createA.innerText = tag;
+
+                        createDiv.appendChild(createA);
+
+                        document.querySelector('#myModal #showTag').appendChild(createDiv);
+                    }
+                })
+
+            }
+        }
+        myLightBox();
+    </script>
+
+</html>

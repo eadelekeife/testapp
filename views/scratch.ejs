@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.0/css/line.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Montez|Lobster|Josefin+Sans|Shadows+Into+Light|Pacifico|Amatic+SC:700|Orbitron:400,900|Rokkitt|Righteous|Dancing+Script:700|Bangers|Chewy|Sigmar+One|Architects+Daughter|Abril+Fatface|Covered+By+Your+Grace|Kaushan+Script|Gloria+Hallelujah|Satisfy|Lobster+Two:700|Comfortaa:700|Cinzel|Courgette|Lato|Open+Sans|Roboto|Josefin+Slab|Barlow+Condensed|Dosis|DM+Sans|Poppins|Nixie+One"
+        rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0/fabric.min.js "></script>
+    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script
+        src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <!-- <link href="loaders.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet"> -->
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+
+     <div class="ent">
+        <div class="nav">
+            <div class="first-nav">
+                <h3 class="mt-2 ml-4">Thumbvids</h3>
+            </div>
+            <div class="ml-auto mt-1 mr-4 side-nav">
+                <button class="btn text-white">Youtube Thumbnail</button>
+                <button class="btn text-white">
+                    1280 x 720px
+                </button>
+                <% if(typeof user !== 'undefined' ) { %>
+                    <button class="btn white" id="saveToDB" onclick="saveVideos()">
+                        Save Design
+                    </button>
+                    <button class="btn white" id="getVideos" onclick="getVideos()" data-toggle="modal" data-target="#myModal"
+                        data-backdrop="static" data-keyboard="false">
+                        <i class="icon uil uil-download-alt"></i> <span> Upload to Youtube </span>
+                    </button>
+                <% } else { %>
+                    <button class="btn white" id="saveToDB" onclick="saveVideos()">
+                        Save Design
+                    </button>
+                <% } %>
+            </div>
+        </div>
+        <div class="canvas">
+            <div class="flex-one">
+                <ul>
+                    <li class="list" data-target="backgroundControls">
+                        <span><i class="uil uil-browser"></i></span><br>
+                        Background</li>
+                    <li class="list" data-target="foregroundControls">
+                        <span><i class="uil uil-pathfinder-unite"></i></span><br>
+                        Foreground</li>
+                    <li class="list" data-target="uploadControls">
+                        <span><i class="uil uil-cloud-upload"></i></span><br>
+                        Uploads</li>
+                    <li class="list" data-target="effectsControls">
+                        <span><i class="uil uil-edit-alt"></i></span><br>
+                        Effects</li>
+                    <li class="list" data-target="patternControls">
+                        <span><i class="uil uil-image-v"></i></span><br>
+                        Filters</li>
+                    <li class="list" data-target="textsControls" class="">
+                        <span><i class="uil uil-font"></i><br>
+                            Texts</li>
+                    <li class="list" data-target="cinemaControls">
+                        <span><i class="uil uil-film"></i></span><br>
+                        Cinema</li>
+                    <li class="list" data-target="shapesControls">
+                        <span><i class="uil uil-polygon"></i></i></span><br>
+                        Shapes</li>
+                    <li class="list" data-target="borderControls">
+                        <span><i class="uil uil-border-alt"></i></span><br>
+                        Borders</li>
+                    <li class="list" data-target="brushControls">
+                        <span><i class="uil uil-paint-tool"></i></span><br>
+                        Brush</li>
+                </ul>
+            </div>
+            <div class="flex-two">
+                <div class="container">
+                    <div class="defaultView" id="defaultView">
+                        <div class="mt-2 pt-2"></div>
+                        <ul>
+                            <li><span>Image Type:</span> Youtube Thumbnail </li>
+                            <li><span>Width:</span> 1280px</li>
+                            <li><span>Height:</span> 720px</li>
+                        </ul>
+                    </div>
+                    <div class="backgroundControls" id="backgroundControls">
+                        <div class="mt-5">
+                            <!-- <span style="float: left;" class="mr-2 mt-2">Background Color:</span> -->
+                            <span class="colorPick"></span>
+                        </div>
+                        <form action="" id="backgroundForm">
+                            <div class="form-group mt-3">
+                                <div class="input-group">
+                                    <input type="text" name="" id="backgroundBox" class="form-control">
+                                    <div class="input-group-append" id="searchBackground">
+                                        <div class="input-group-text bg-info">
+                                            <i class="uil uil-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="container text-center mt-4">
+                            <div class="loadingio-spinner-rolling-pcfibe0zdl" id="background">
+                                <div class="ldio-lk990xjknu">
+                                    <div></div>
+                                </div>
+                            </div>
+
+                            <div id="bodyImage">
+                            </div>
+
+                            <div class="mt-4 pt-4"></div>
+                            <div id="showBodyNext"></div>
+                        </div>
+                    </div>
+                    <div class="patternControls" id="patternControls">
+                        <div class="mt-3 pt-3"></div>
+                        <label>Use WebGl<input type="checkbox" id="webgl" checked=""></label>
+                        <div id="bench">1600 x 1200px 0ms</div>
+                        <div class="mt-3"></div>
+                        <hr>
+                        <div id="showFilters">
+                            <ul>
+                                <form action="" class="form">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <img src="../../images/filter/original.png" class="img-fluid"
+                                                alt="original image of mountain landscape">
+                                        </label>
+                                        <input type="checkbox" name="" id="">
+                                        <h6 class="text-center">Original</h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">
+                                            <img src="../../images/filter/grayscale.png" class="img-fluid"
+                                                alt="grayscale image of mountain landscape">
+                                        </label>
+                                        <input type="checkbox" id="grayscale">
+                                        <i class="uil uil-check"></i>
+                                        <h6 class="text-center">Greyscale</h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">
+                                            <img src="../../images/filter/technicolor.png" class="img-fluid"
+                                                alt="technicolor image of mountain landscape">
+                                        </label>
+                                        <input type="checkbox" id="technicolor">
+                                        <i class="uil uil-check"></i>
+                                        <h6 class="text-center">Technicolor</h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">
+                                            <img src="../../images/filter/polaroid.png" class="img-fluid"
+                                                alt="polaroid image of mountain landscape">
+                                        </label>
+                                        <input type="checkbox" id="polaroid">
+                                        <i class="uil uil-check"></i>
+                                        <h6 class="text-center">Polaroid</h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">
+                                            <img src="../../images/filter/kodachrome.png" class="img-fluid"
+                                                alt="kodachrome image of mountain landscape">
+                                        </label>
+                                        <input type="checkbox" id="kodachrome">
+                                        <i class="uil uil-check"></i>
+                                        <h6 class="text-center">Kodachrome</h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">
+                                            <img src="../../images/filter/brownie.png" class="img-fluid"
+                                                alt="brownie image of mountain landscape">
+                                        </label>
+                                        <input type="checkbox" id="brownie">
+                                        <i class="uil uil-check"></i>
+                                        <h6 class="text-center">Brownie</h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">
+                                            <img src="../../images/filter/sharpen.png" class="img-fluid"
+                                                alt="sharpen image of mountain landscape">
+                                        </label>
+                                        <input type="checkbox" id="sharpen">
+                                        <i class="uil uil-check"></i>
+                                        <h6 class="text-center">Sharpen</h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">
+                                            <img src="../../images/filter/emboss.png" class="img-fluid"
+                                                alt="emboss image of mountain landscape">
+                                        </label>
+                                        <input type="checkbox" id="emboss">
+                                        <i class="uil uil-check"></i>
+                                        <h6 class="text-center">Emboss</h6>
+                                    </div>
+                                </form>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="foregroundControls" id="foregroundControls">
+                        <form action="" id="foregroundForm">
+                            <div class="form-group mt-5">
+                                <div class="input-group">
+                                    <input type="text" name="" id="foregroundBox" class="form-control">
+                                    <div class="input-group-append" id="searchForeground">
+                                        <div class="input-group-text bg-info">
+                                            <i class="uil uil-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="container text-center">
+                            <div class="loadingio-spinner-rolling-pcfibe0zdl" id="foreground">
+                                <div class="ldio-lk990xjknu">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div id="foregroundImage">
+                            </div>
+
+                            <div class="mt-3 pt-3"></div>
+                            <div id="showNextImages"></div>
+                        </div>
+                    </div>
+                    <div class="uploadsControls" id="uploadControls">
+                        <div class="form-group backgroundInput mt-5">
+                            <label class="">Upload Background Image</label>
+                            <input type="file" id="addBackground">
+                        </div>
+                        <div class="form-group backgroundInput mt-5">
+                            <label class="">Upload Foreground Image</label>
+                            <input type="file" id="addforeground">
+                        </div>
+                    </div>
+                    <div class="effectControls" id="effectsControls">
+                        <div class="mt-3 pt-3"></div>
+                        <label>Use WebGl<input type="checkbox" id="webgl" checked=""></label>
+                        <div id="bench">1600 x 1200px 0ms</div>
+                        <div class="mt-3"></div>
+                        <p>
+                            <label><span>Invert:</span> <input type="checkbox" id="invert"></label>
+                        </p>
+                        <p>
+                            <label><span>Sepia:</span> <input type="checkbox" id="sepia"></label>
+                        </p>
+                        <p>
+                            <label><span>Black/White:</span> <input type="checkbox" id="blackwhite"></label>
+                        </p>
+                        <p>
+                            <label><span>Vintage:</span> <input type="checkbox" id="vintage"></label>
+                        </p>
+                        <!-- <input type="range" max="1000" min="0" class="slider effectsSlider" title="select image to continue" id="charSpacing" onchange="changeLetterSpacing(event)" name=""> -->
+                        <p class="mt-4">
+                            <label><span>Saturation:</span> <input type="checkbox" id="saturation"></label>
+                            <br>
+                            <input type="range" id="saturation-value" value="0" min="-1" max="1" step="0.003921"
+                                class="slider effectsSlider" title="select image to continue">
+                            <span class="slider_label" style="float: right;"></span>
+                        </p>
+                        <p class="mt-4">
+                            <label><span>Blur:</span> <input type="checkbox" id="blur"></label>
+                            <br>
+                            <input type="range" id="blur-value" value="0.1" min="0" max="1" step="0.01"
+                                class="slider effectsSlider" title="select image to continue">
+                            <span class="slider_label" style="float: right;"></span>
+                        </p>
+                        <p class="mt-4">
+                            <label><span>Contrast:</span> <input type="checkbox" id="contrast"></label>
+                            <br>
+                            <input type="range" id="contrast-value" value="0" min="-1" max="1" step="0.003921"
+                                class="slider effectsSlider" title="select image to continue">
+                            <span class="slider_label" style="float: right;"></span>
+                        </p>
+                        <p class="mt-4">
+                            <label><span>Hue:</span> <input type="checkbox" id="hue"></label>
+                            <br>
+                            <input type="range" id="hue-value" value="0" min="-2" max="2" step="0.002"
+                                class="slider effectsSlider" title="select image to continue">
+                            <span class="slider_label" style="float: right;"></span>
+                        </p>
+                        <p class="mt-4">
+                            <label><span>Pixelate</span> <input type="checkbox" id="pixelate"></label>
+                            <br>
+                            <input type="range" id="pixelate-value" value="4" min="2" max="20"
+                                class="slider effectsSlider" title="select image to continue">
+                            <span class="slider_label" style="float: right;"></span>
+                        </p>
+                        <p class="mt-4">
+                            <label><span>Brightness:</span> <input type="checkbox" id="brightness"></label>
+                            <br>
+                            <input type="range" id="brightness-value" value="0.1" min="-1" max="1" step="0.003921"
+                                class="slider effectsSlider" title="select image to continue">
+                            <span class="slider_label" style="float: right;"></span>
+                        </p>
+                    </div>
+                    <div class="textbox" id="textsControls">
+                        <div class="my-3 py-3" id="firstContact">
+                            <div class="text-center">
+                                <button id="heading"
+                                    class="btn btn-default col-lg-12 col-md-12 headerButton text-button">Add
+                                    Heading</button><br>
+
+                                <button id="sub"
+                                    class="btn btn-default col-lg-12 col-md-12 subheaderButton text-button">Add
+                                    Subheading</button><br>
+
+                                <button id="text"
+                                    class="btn btn-default col-lg-12 col-md-12 bodyheaderButton text-button">Add
+                                    Body Text</button>
+                            </div>
+                            <hr>
+                            <div class="mt-3">
+                                <div id="sampleText">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="" id="secondContact">
+
+                            <span><i class="fas-fa-arrow-right"></i></span>
+
+                            <div class="form-group">
+                                <div class="container mt-5">
+                                    <span style="float: left;" class="mr-2 mt-2">Color:</span> <span
+                                        class="color-picker"></span>
+                                    <div class="form-group mt-3">
+                                        <label for="">Font Family</label>
+                                        <select id="fontOptions" name="" class=" form-control" id=""
+                                            onchange="changeFontFamily(event)">
+                                            <option value="">Select Font</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Font Size</label>
+                                        <select id="fontSize" name="" class="form-control"
+                                            onchange="changeTextSize(event)">
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="14">14</option>
+                                            <option value="16">16</option>
+                                            <option value="18">18</option>
+                                            <option value="20">20</option>
+                                            <option value="22">22</option>
+                                            <option value="24">24</option>
+                                            <option value="26">26</option>
+                                            <option value="28">28</option>
+                                            <option value="36">36</option>
+                                            <option value="48">48</option>
+                                            <option value="72">72</option>
+                                            <option value="96">96</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="range-wrap">
+                                            <label for="">Text Opacity</label>
+                                            <div class="range-value" id="textOpacityDisplay"></div>
+                                            <input id="textOpacity" type="range" max="1" min="0.0" step="0.1">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="range-wrap">
+                                            <label for="">Line Height</label>
+                                            <div class="range-value" id="lineHeightDisplay"></div>
+                                            <input id="lineHeight" type="range" max="5" value="1" min="-2" step="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+
+                            <div class="footer icons mt-2">
+                                <div class="container">
+                                    <div class="row">
+                                        <button type="button" id="bold" data-value="Bold" class="btn">
+                                            <span><i class="uil uil-bold"></i></span>
+                                        </button>
+                                        <button type="button" id="italic" data-value="italic" class="btn">
+                                            <span><i class="uil uil-italic"></i></span>
+                                        </button>
+                                        <button id="underline" data="underline" class="btn">
+                                            <span><i class="uil uil-underline"></i></span></button>
+                                        <button id="fontCharacterStyle" data="uppercase" class="btn">
+                                            <span><i class="uil uil-font"></i></span>
+                                        </button>
+                                        <button id="alignLeft" data="alignLeft" class="btn">
+                                            <span><i class="uil uil-align-left"></i></span>
+                                        </button>
+                                        <button id="alignRight" data="alignRight" class="btn">
+                                            <span><i class="uil uil-align-right"></i></span>
+                                        </button>
+                                        <button id="alignCenter" data="alignCenter" class="btn">
+                                            <span><i class="uil uil-align-center-alt"></i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="cinemaControls" id="cinemaControls">
+                        <div id="showLayer">
+                            <div class="container my-5">
+                                <span style="float: left;" class="mr-2 mt-2">Color:</span> <span
+                                    class="layerPicker"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Add Top Layer</label>
+                                <button type="button" data-target="layerTop" id="addTopLayerBackground"
+                                    class="btn p-3 layerButton text-center col-lg-12 col-md-12"></button>
+                            </div>
+                            <div class="mt-3 pt-3"></div>
+                            <div class="form-group">
+                                <label for="">Add Bottom Layer</label>
+                                <button type="button" data-target="layerBottom" id="addBottomLayerBackground"
+                                    class="btn p-3 layerButton text-center col-lg-12 col-md-12"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="brushControls" class="brushControls">
+                        <div class="mt-4 pt-4"></div>
+                        <button id="drawing-mode" class="btn btn-info">Enable Brush</button>
+                        <div class="mt-3 pt-3"></div>
+                        <button id="clear-canvas" class="btn btn-info" style="display: none">Clear</button>
+                        <div id="drawing-mode-options mt-5">
+                            <label for="drawing-mode-selector">Mode:</label>
+                            <select id="drawing-mode-selector" class="form-control">
+                                <option>Pencil</option>
+                                <option>Circle</option>
+                                <option>Spray</option>
+                            </select><br>
+                            <p class="mt-4 mb-3">
+                                <label for="drawing-line-width">Line width:</label>
+                                <span class="info">30</span><input type="range" value="30" min="0" max="150"
+                                    id="drawing-line-width">
+                            </p>
+
+                            <label for="drawing-color">Line color:</label>
+                            <img style="min-width:16px;min-height:16px;box-sizing:unset;box-shadow:none;background:unset;padding:0 6px 0 0;cursor:pointer;"
+                                src="chrome-extension://ohcpnigalekghcmgcdcenkpelffpdolg/img/icon16.png"
+                                title="Select with ColorPick Eyedropper - See advanced option: &quot;Add ColorPick Eyedropper near input[type=color] fields on websites&quot;"
+                                class="colorpick-eyedropper-input-trigger"><input type="color" value="#005E7A"
+                                id="drawing-color" colorpick-eyedropper-active="true"><br>
+
+                            <label for="drawing-shadow-color">Shadow color:</label>
+                            <img style="min-width:16px;min-height:16px;box-sizing:unset;box-shadow:none;background:unset;padding:0 6px 0 0;cursor:pointer;"
+                                src="chrome-extension://ohcpnigalekghcmgcdcenkpelffpdolg/img/icon16.png"
+                                title="Select with ColorPick Eyedropper - See advanced option: &quot;Add ColorPick Eyedropper near input[type=color] fields on websites&quot;"
+                                class="colorpick-eyedropper-input-trigger"><input type="color" value="#005E7A"
+                                id="drawing-shadow-color" colorpick-eyedropper-active="true"><br>
+
+                            <p class="mt-4">
+                                <label for="drawing-shadow-width">Shadow width:</label>
+                                <span class="info">0</span><input type="range" value="0" min="0" max="50"
+                                    id="drawing-shadow-width">
+                            </p>
+
+                            <p class="mt-4">
+                                <label for="drawing-shadow-offset">Shadow offset:</label>
+                                <span class="info">0</span><input type="range" value="0" min="0" max="50"
+                                    id="drawing-shadow-offset">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="shapeControls" id="shapesControls">
+                        <div class="container my-3">
+                            <span style="float: left;" class="mr-2 mt-2">Color:</span> <span class="shapePicker"
+                                id="shapesColor"></span>
+                        </div>
+                        <div class="row">
+                            <img src="../../shapes/square.png" alt="" id="addSquare" class="shapes img-fluid">
+                            <img src="../../shapes/circle.png" alt="" id="addCircle" class="shapes img-fluid">
+                            <img src="../../shapes/rectangle.png" alt="" id="addRectangle" class="shapes img-fluid">
+                            <img src="../../shapes/triangle.png" alt="" id="addTriangle" class="shapes img-fluid">
+                            <img src="../../shapes/polygon1.png" alt="" id="addPolygon" class="shapes img-fluid">
+                            <img src="../../shapes/star.png" alt="" id="addStar" class="shapes img-fluid">
+                            <img src="../../shapes/roundedRect.png" alt="" id="addRoundedRectangle"
+                                class="shapes img-fluid">
+                            <img src="../../shapes/squareStroke.png" alt="" id="addSquareStroke"
+                                class="shapes img-fluid">
+                            <img src="../../shapes/rectangleStroke.png" alt="" id="addRectangleStroke"
+                                class="shapes img-fluid">
+                            <img src="../../shapes/circleStroke.png" alt="" id="addCircleStroke"
+                                class="shapes img-fluid">
+                        </div>
+                        <div class="range-wrap my-5">
+                            <label for="">Shape Opacity</label>
+                            <div class="range-value" id="shapeOpacityDisplay"></div>
+                            <input id="shapeOpacity" type="range" max="1" value="1" min="0.0"
+                                title="Select shape to continue" step="0.1">
+                        </div>
+                    </div>
+                    <div id="borderControls">
+                        <div class="mt-2 pt-2"></div>
+                        <div class="container my-3">
+                            <span style="float: left;" class="mr-2 mt-2">Color:</span> <span
+                                class="borderPicker"></span>
+                        </div>
+                        <div class="mt-4 pt-4"></div>
+                        <div class="container text-center">
+                            <button data-borderKey="0" data-borderValue="3" class="btn bord fullBorder"></button>
+                            <button data-borderKey="3" data-borderValue="3" class="btn bord dashedBorder"></button>
+                            <button data-borderKey="2" data-borderValue="2" class="btn bord smalldashedBorder"></button>
+                            <button data-borderKey="3" data-borderValue="3" class="btn bord smalldottedBorder"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-three">
+                <div class="page">
+                    <button class="btn" id="undo" title="undo">
+                        <i class="icon uil uil-history"></i>
+                    </button>
+                    <button class="btn" id="backwards" title="backwards">
+                        <i class="icon uil uil-arrow-down"></i>
+                    </button>
+                    <button class="btn" id="toBack" title="pin to back">
+                        <i class="icon uil uil-bring-front"></i>
+                    </button>
+                    <button class="btn" id="toFront" title="bring to front">
+                        <i class="icon uil uil-bring-bottom"></i>
+                    </button>
+                    <button class="btn" id="delete" title="delete">
+                        <i class="icon uil uil-trash-alt"></i>
+                    </button>
+                    <canvas id="demoCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card alt">
+        <h6>Sorry, we could not display this page on this current Screen Resolution. Use a device with a larger screen
+            size to access site</h6>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog .modal-dialog-scrollable">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="modalCardHeader">Select Account</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body my-4 py-5">
+                    <div class="container text-center">
+                        <div class="loadingio-spinner-rolling-pcfibe0zdl" id="youtubeSpinner">
+                            <div class="ldio-lk990xjknu">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div id="modalAccounts" class="row text-center container">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pageLoader"></div>
+    <a id="link"></a>
+    <!-- <script>
+        $(document).ready(function () {
+            $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+        });
+        
+
+    </script> -->
+
+    <script src="js/scratch-script.js"></script>
+    <script src="js/colorpicker.js"></script>
+    <script src="js/brush.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/filters.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+@font-face {
+    font-family: 'Wotfard Regular';
+    src: url('../fonts/Wotfard/wotfard_regular.woff2');
+}
+
+@font-face {
+    font-family: 'Akira Expanded';
+    src: url('../fonts/Akira/Akira\ Expanded\ Demo.otf');
+}
+
+body {
+    font-family: 'Wotfard Regular' !important;
+    /* color: #fff !important; */
+}
+
+.new_homepage_design p {
+    font-family: 'Wotfard Regular' !important;
+}
+
+.new_homepage_design h1, .new_homepage_design h2, .new_homepage_design h3,
+.new_homepage_design h4, .new_homepage_design h5, .new_homepage_design h6 {
+    font-family: 'Akira Expanded';
+}
+
+.new_homepage_design .grid_2 img {
+    height: 100%;
+    width: 100%;
+}
+
+.new_homepage_design .grid_2 {
+    align-items: center;
+}
+
+header {
+    background: #39736C;
+    padding: 5% 0px;
+}
+
+header .grid_2 h2 {
+    font-family: 'Akira Expanded';
+    color: #fff;
+}
+
+header .grid_2 p {
+    font-family: 'Wotfard Regular';
+    color: #fff;
+}
+
+.new_homepage_design header .grid_2 img {
+    height: auto;
+    width: 60%;
+    margin: 0% auto;
+    display: block;
+}
+
+header .grid_2 a {
+    background: #EF3D3D;
+    color: #fff;
+    padding: 12px 35px;
+    border: 1px solid #EF3D3D;
+    font-family: 'Wotfard Regular';
+    border-radius: 2px;
+}
+
+
+/* first_props */
+.first_props {
+    background: #F2653B;
+}
+
+.new_homepage_design .first_props img.main_img {
+    width: 70%;
+    height: auto;
+}
+
+.new_homepage_design .first_props .grid_text {
+    align-items: flex-end;
+}
+
+.new_homepage_design .first_props p {
+    width: 50%;
+    margin-bottom: 0px;
+    margin-top: 5%;
+    padding-left: 5%;
+}
+
+.new_homepage_design .grid_2 img.small_img {
+    width: 5%;
+    height: unset;
+    justify-content: flex-end;
+    float: right;
+    margin-top: -10%;
+}
+
+.new_homepage_design .first_props .grid_text div.props_text {
+    justify-items: end;
+    display: grid;
+}
+
+.new_homepage_design .first_props .grid_text div.props_text div {
+    justify-self: center;
+    /* width: 100%; */
+}
+
+.new_homepage_design .first_props h2 {
+    width: 10%;
+    margin: 0px auto;
+    font-size: 2.5rem;
+    /* margin-left: -40%; */
+}
+
+.new_homepage_design .second_props {
+    background: #F8EBDE;
+    min-height: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new_homepage_design .second_props .props_text {
+    margin: 0% auto;
+    display: block;
+    width: max-content;
+}
+
+.new_homepage_design .second_props h3 {
+    font-size: 5rem;
+    font-family: 'Akira Expanded';
+    color: #23222c;
+}
+
+.new_homepage_design .second_props h3 span {
+    font-size: 5rem;
+    font-family: 'Akira Expanded';
+    margin-left: 80px;
+}
+
+.new_homepage_design .second_props p {
+    color: #23222c;
+}
+
+.new_homepage_design .second_props p:first-child {
+    margin-left: -150px;
+}
+
+.new_homepage_design .second_props p:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* third_props */
+.third_props {
+    background: #E4B368;
+    background: #DDD7EB;
+}
+
+.third_props a {
+    background: #EF3D3D;
+    color: #fff;
+    padding: 12px 35px;
+    border: 1px solid #EF3D3D;
+    font-family: 'Wotfard Regular';
+    border-radius: 2px;
+}
+
+.new_homepage_design .third_props .grid_2 img {
+    height: auto;
+    width: 60%;
+    margin: 0% auto;
+    display: block;
+    padding: 5% 0;
+}
+
+.new_homepage_design .third_props .grid_2 p, .new_homepage_design .third_props .grid_2 h2 {
+    color: #23222c;
+}
+
+/* footer */
+footer p, footer ul li a {
+    font-size: .9rem;
+    color: #91949c;
+    font-family: 'Wotfard Regular';
+}
+
+footer ul li {
+    line-height: 2.1;
+}
+
+footer h3 {
+    font-size: .9rem;
+    color: #fff;
+}
+
+footer .grid_4 {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    align-items: unset;
+}
+
+footer .grid_4 ion-icon {
+    color: #91949c;
+    font-size: 1.4rem;
+    margin-right: 10px;
+}
+
+footer .sec_footer p {
+    margin-top: 4%;
+    margin-bottom: 3px;
+}
+
+footer .sec_footer div {
+    display: grid;
+    width: 40%;
+    grid-template-columns: 2fr 1fr;
+}
+
+footer .sec_footer input {
+    border: 1px solid #fff;
+    background: transparent;
+    height: 3rem;
+    border-radius: 3px 0px 0px 3px;
+    color: #fff;
+    padding-left: 5px;
+}
+
+footer .sec_footer button {
+    background: #EF3D3D;
+    color: #fff;
+    border-radius: 0px 3px 3px 0px;
+    border: 1px solid #EF3D3D;
+}
+
+li.menubar path {
+    color: #fff;
+    /* .menu-icon path */
+}
+
+.grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+.grid-5 img {
+    width: 100%;
+    height: 100%;
+}
+
+.website-redesign {
+    background: #000;
+}
+
+.website-redesign .hero h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.website-redesign .hero {
+    padding: 5% 0px;
+}
+
+.website-redesign .hero .grid_4 {
+    grid-gap: 20px;
+}
+
+.website-redesign .hero .grid_4 img {
+    border-radius: 16px;
+}
+
+@media screen and (max-width: 720px) {
+    footer .grid_4 {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 30px;
+    }
+
+    .new_homepage_design .grid_2 {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .new_homepage_design .second_props h3,
+    .new_homepage_design .second_props h3 span {
+        font-size: 2rem;
+    }
+
+    .new_homepage_design .second_props p:first-child {
+        margin-left: -30px;
+        width: 70%;
+    }
+
+    .new_homepage_design .third_props .grid_2 p, header .grid_2 p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .new_homepage_design .third_props .grid_2 h2, header .grid_2 h2 {
+        font-size: 1.4rem;
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+
+    .new_homepage_design .third_props .grid_2 img, .new_homepage_design header .grid_2 img {
+        width: 100%;
+        padding: 5% 0;
+    }
+
+    .third_props a, header .grid_2 a {
+        display: block;
+        width: max-content;
+        padding: 8px 25px;
+    }
+
+    .third_props, header {
+        padding: 15% 0px;
+    }
+
+    .website-redesign .hero {
+        padding: 15% 0px;
+    }
+
+    .website-redesign .hero h1 {
+        font-size: 1.6rem;
+    }
+}
